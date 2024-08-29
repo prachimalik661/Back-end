@@ -1,0 +1,32 @@
+// Task 1: Print students with age greater than 20 and marks greater than 85
+db.student.find(
+   { age: { $gt: 20 }, marks: { $gt: 85 } }
+)
+
+// Task 2: Print students with marks greater than or equal to 90 and age greater than or equal to 20
+db.student.find(
+   { marks: { $gte: 90 }, age: { $gte: 20 } }
+)
+
+// Task 3: Print students with grade A++
+db.student.find(
+   { grade: "A++" }
+)
+
+// Using the $and Operator:
+// In MongoDB, the $and operator combines multiple query conditions, requiring that all conditions be true.
+// Example: Print students with age greater than 22 and marks greater than or equal to 85
+db.student.find({
+   $and: [
+      { age: { $gt: 22 } },
+      { marks: { $gte: 85 } }
+   ]
+})
+
+// Count Documents Command:
+// db.student.countDocuments() returns the total number of documents in the student collection.
+db.student.countDocuments()
+
+// Estimated Document Count Command:
+// db.collection.estimatedDocumentCount() returns an estimated count of documents in the collection.
+db.collection.estimatedDocumentCount()
