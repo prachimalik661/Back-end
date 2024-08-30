@@ -1,0 +1,57 @@
+// Using the $or Operator:
+// In MongoDB, the $or operator combines query conditions, and documents that meet at least one of the conditions are returned.
+// Example: Print students with either age equal to 20 or marks equal to 71
+db.student.find({$or: [{age: 20}, {marks: 71}]})
+
+// Using the $not Operator:
+// In MongoDB, the $not operator negates the condition, returning documents that do not meet the specified condition.
+// Example: Print students whose age is not equal to 20
+db.student.find({age: {$not: {$eq: 20}}})
+
+// Using the $nor Operator:
+// In MongoDB, the $nor operator returns documents that do not match any of the given conditions.
+// Example: Print students whose age is not equal to 20 and grade is not equal to A
+db.student.find({$nor: [{age: 20}, {grade: "A"}]})
+
+// Updation Command:
+// db.collection.UpdateOne():
+// 
+db.Students.updateOne({name:"Vikram Rana"},{$set: {grade:"B"}})
+
+// db.collection.updateMany():
+db.Students.updateMany({ grade: "C+" },{ $set: { grade: "B" }});
+
+
+// db.collection.findOneAndUpdate():
+db.Students.findOneAndUpdate({ name: "Ishika Verma" },{ $set: { marks: 90 } });
+
+// db.collection.replaceOne():
+db.Students.replaceOne({ name: "Vihaan Singh" },{ name: "Vihaan Singh",age: 18,marks: 75,grade: "B+"});
+
+// Using the $nor Operator:
+// In MongoDB, the $nor operator returns documents that do not match any of the given conditions.
+// Example: Print students whose age is not equal to 20 and grade is not equal to "A"
+db.student.find({
+   $nor: [
+      { age: 20 },       // Exclude students with age 20
+      { grade: "A" }     // Exclude students with grade "A"
+   ]
+});
+
+// Updation Command:
+
+// db.collection.updateOne():
+// Update a single document where the student's name is "Vikram Rana" to set the grade to "B"
+db.Students.updateOne({ name: "Vikram Rana" },{ $set: { grade: "B" } });
+
+// db.collection.updateMany():
+// Update all documents where the grade is "C+" to set the grade to "B"
+db.Students.updateMany({ grade: "C+" },{ $set: { grade: "B" }});
+
+// db.collection.findOneAndUpdate():
+// Find a single document where the student's name is "Ishika Verma" and update the marks to 90
+db.Students.findOneAndUpdate({ name: "Ishika Verma" },{ $set: { marks: 90 }});
+
+// db.collection.replaceOne():
+// Replace the document with the student's name "Vihaan Singh" with a new document having updated details
+db.Students.replaceOne({ name: "Vihaan Singh" },{ name: "Vihaan Singh",age: 18,marks: 75,grade: "B+"});
